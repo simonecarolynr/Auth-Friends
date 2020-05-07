@@ -10,7 +10,7 @@ export const Login = (props) => {
 
     const hanldeSubmit = e => {
         axios
-            .post('/api/login', user)
+            .post('http://localhost:5000/api/login', user)
             .then(res => {
                 setIsLoading(true);
                 localStorage.setItem('token', res.data.token);

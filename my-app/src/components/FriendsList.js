@@ -12,7 +12,7 @@ export const FriendsList = () => {
         email: '',
     }])
 
-    axiosWithAuth().get(/api/friends)
+    axiosWithAuth().get('http://localhost:5000/api/friends')
         .then(res => setFriends(res.data))
         .catch(err => console.log(err))
     

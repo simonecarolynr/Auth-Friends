@@ -11,7 +11,7 @@ const NewFriendForm = () => {
     }])
 
     const hanldeSubmit = e => {
-        axiosWithAuth().post('/api/friends', friend)
+        axiosWithAuth().post('http://localhost:5000/api/friends', friend)
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }

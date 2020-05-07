@@ -2,7 +2,7 @@
 export const PrivateRoute = (props) => {
 
     if (localStorage.getItem('token') === null) {
-        propshistory.push('/login')
+        props.history.push('/login')
     }
 
 }
