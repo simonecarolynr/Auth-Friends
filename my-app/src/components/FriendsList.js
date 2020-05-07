@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { axiosWithAuth } from '../axiosAuth';
 import NewFriendForm from './NewFriendForm';
 
 
@@ -12,8 +12,7 @@ export const FriendsList = () => {
         email: '',
     }])
 
-    axios
-        .get(/api/friends)
+    axiosWithAuth().get(/api/friends)
         .then(res => setFriends(res.data))
         .catch(err => console.log(err))
     

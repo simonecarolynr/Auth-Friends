@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { axiosWithAuth } from '../axiosAuth';
 
 const NewFriendForm = () => {
 
@@ -10,8 +11,7 @@ const NewFriendForm = () => {
     }])
 
     const hanldeSubmit = e => {
-        axios
-            .post('/api/friends', friend)
+        axiosWithAuth().post('/api/friends', friend)
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
