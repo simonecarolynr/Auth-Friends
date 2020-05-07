@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NewFriendForm from './NewFriendForm';
+
 
 export const FriendsList = () => {
 
@@ -16,6 +18,7 @@ export const FriendsList = () => {
         .catch(err => console.log(err))
     
     return (
+        <>
         <div className='friendsList'>
             {friends.map(friend => {
                 return (
@@ -27,6 +30,8 @@ export const FriendsList = () => {
                 )
             })}
         </div>
+        <NewFriendForm />
+        </>
     )
 
 }
