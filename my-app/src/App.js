@@ -1,20 +1,22 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import Login from './components/Login';
-import FriendsList from './components/FriendsList';
-import PrivateRoute from './components/PrivateRoute';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Login } from './components/Login';
+import { PrivateRoute } from './components/PrivateRoute';
+import { FriendsList } from "./components/FriendsList";
 import './App.css';
 
 function App() {
+
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
 
-      </header>
 
-      <Route path='/login' component={Login} />
+
+      <Route path='/login' render={(props) => <Login {...props} />} />
       <PrivateRoute path='/friends' component={FriendsList} />
     </div>
+    </Router>
   );
 }
 

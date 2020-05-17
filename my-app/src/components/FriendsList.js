@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../axiosAuth';
 import NewFriendForm from './NewFriendForm';
 
 
 export const FriendsList = () => {
 
-    const [ friends, setFriends ] = useState([{
-        id: 0,
-        name: '',
-        age: 0,
-        email: '',
-    }])
+    const [ friends, setFriends ] = useState([])
 
-    axiosWithAuth().get(/api/friends)
-        .then(res => setFriends(res.data))
+    useEffect(() => {
+        axiosWithAuth().get('http://localhost:5000/api/friends')
+        .then(res => {
+            console.log(res.data)
+            setFriends(res.data)
+        })
         .catch(err => console.log(err))
+    }, [])
     
     return (
         <>
@@ -29,7 +29,7 @@ export const FriendsList = () => {
                 )
             })}
         </div>
-        <NewFriendForm />
+        <NewFriendForm setFriends={setFriends} />
         </>
     )
 

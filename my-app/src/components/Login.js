@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export const Login = (props) => {
 
@@ -9,11 +10,14 @@ export const Login = (props) => {
     });
 
     const hanldeSubmit = e => {
+        e.preventDefault();
+        setIsLoading(true);
         axios
-            .post('/api/login', user)
+            .post('http://localhost:5000/api/login', user)
             .then(res => {
-                setIsLoading(true);
-                localStorage.setItem('token', res.data.token);
+                setIsLoading(false);
+                console.log(res.data.payload)
+                localStorage.setItem('token', res.data.payload);
                 props.history.push('/friends');
             })
             .catch(err => console.log(err))
